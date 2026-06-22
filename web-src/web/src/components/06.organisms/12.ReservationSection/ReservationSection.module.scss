@@ -258,6 +258,10 @@
   flex-wrap: wrap;
   gap: $space-2;
   align-content: flex-start;
+
+  @media screen and (max-width: 320px) {
+    gap: 0.15rem;
+  }
 }
 
 .timeSlots__slot {
@@ -571,11 +575,13 @@
   font-size: $fs-sm;
   letter-spacing: 0.06em;
   color: $color-text;
+  display: flex;
+  flex-direction: column;
 }
 
 .menuList__includes {
   font-family: $font-input;
-  font-size: $fs-xxs;
+  font-size: clamp(0.5rem, 1vw, $fs-xxs);
   color: $color-text;
 }
 

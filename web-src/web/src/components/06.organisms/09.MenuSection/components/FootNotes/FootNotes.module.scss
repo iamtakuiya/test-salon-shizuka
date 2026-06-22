@@ -3,19 +3,24 @@
 .footNotes {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   gap: $space-1;
+  padding-inline: 1rem;
+  
+  @include tablet {
+    align-items: flex-end;
+    padding-inline: unset;
+  }
 }
 
 .footNote {
   font-family: $font-input;
-  font-size: $fs-xxs;
+  font-size: clamp(0.5rem, 1vw, $fs-xxs);
   line-height: 1.8;
   letter-spacing: 0.04em;
   color: $color-text-muted;
   text-align: center;
   
-  @include tablet {    
+  @include tablet {
     text-align: right;
   }
 }

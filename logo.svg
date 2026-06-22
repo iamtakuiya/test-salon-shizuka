@@ -1,0 +1,32 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Group for centering -->
+  <g transform="translate(80, 50)">
+    
+    <!-- Flowing Hair Curves (3 simple lines) - Upper Top -->
+    <g transform="translate(150, 20)">
+      <path d="M 0 30 Q 50 0, 100 30" stroke="#6fcd9f" stroke-width="3" fill="none" />
+      <path d="M 10 45 Q 60 15, 110 45" stroke="#2fa177" stroke-width="3" fill="none" />
+      <path d="M 20 60 Q 70 30, 120 60" stroke="#6fcd9f" stroke-width="3" fill="none" />
+    </g>
+
+    <!-- Main Text: Shizuka (Brush Script MT style) -->
+    <text x="0" y="180" font-family="'Brush Script MT', cursive" font-size="120" fill="#302677">
+      Shizuka
+    </text>
+
+    <!-- Sub-text: SALON (Open Sans / Sans-Serif) -->
+    <text x="110" y="240" font-family="sans-serif" font-size="36" font-weight="600" letter-spacing="10" fill="#302677">
+      SALON
+    </text>
+
+    <!-- Flower (Right edge, below the 'a', no stem) -->
+    <g transform="translate(380, 210) scale(0.6)">
+      <path d="M 40 10 C 60 10, 60 40, 40 40 C 20 40, 20 10, 40 10" fill="#f89e8f" /> <!-- Top Petal -->
+      <path d="M 70 40 C 70 60, 40 60, 40 40 C 40 20, 70 20, 70 40" fill="#ed7360" /> <!-- Right Petal -->
+      <path d="M 40 70 C 20 70, 20 40, 40 40 C 60 40, 60 70, 40 70" fill="#f89e8f" /> <!-- Bottom Petal -->
+      <path d="M 10 40 C 10 20, 40 20, 40 40 C 40 60, 10 60, 10 40" fill="#ed7360" /> <!-- Left Petal -->
+      <circle cx="40" cy="40" r="8" fill="#fdfdfc" /> <!-- Center -->
+    </g>
+    
+  </g>
+</svg>

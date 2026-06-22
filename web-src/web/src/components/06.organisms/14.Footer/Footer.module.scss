@@ -17,11 +17,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-4); /* 16px */
+  gap: var(--space-2);
   flex-wrap: wrap;
+
+  @media screen and (max-width: 320px) {
+    gap: 0.25rem;
+  }
+  
+  @include tablet {
+
+  }
   
   /* Fluid structure switch safely driven through custom appearance/token container class overrides */
-  @include tablet {
+  @include laptop {
     flex-direction: row;
     justify-content: space-between;
   }
@@ -39,7 +47,7 @@
   color: $color-text;
   text-decoration: none;
   transition: opacity 0.2s ease;
-  font-size: clamp(0.75rem, 4vw, 0.85rem);
+  font-size: clamp(0.5rem, 3vw, 0.85rem);
   font-weight: 400;
 }
 
@@ -47,8 +55,20 @@
   opacity: 0.8;
 }
 
+.footer__navList {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet {
+    gap: 1rem;
+  }
+}
+
 .copyright__text {
-  font-size: clamp(0.75rem, 4vw, 0.85rem);
+  font-size: clamp(0.5rem, 3vw, 0.85rem);
   font-weight: 400;
   text-align: right;
 }

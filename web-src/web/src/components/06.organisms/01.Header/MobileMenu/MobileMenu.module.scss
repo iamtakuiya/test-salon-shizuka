@@ -23,7 +23,7 @@
   position: relative;
   top: 60px;
   --headerHeight: 80px;
-  min-height: 592px;
+  min-height: fit-content;
   height: calc(100% - var(--headerHeight));
   width: 100%;
   z-index: 1;
@@ -39,7 +39,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: $space-8;
+  gap: $space-4;
   text-align: center;
   height: calc(100% - var(--socialHeight));
 }

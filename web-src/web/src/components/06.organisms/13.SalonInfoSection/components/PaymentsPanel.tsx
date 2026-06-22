@@ -18,7 +18,8 @@ export function PaymentsPanel() {
       </div>
 
       <a href="#reservation" className={styles.payments__cta}>
-        ご予約はこちら (BOOK NOW)
+        ご予約はこちら 
+        {/* (BOOK NOW) */}
       </a>
     </div>
   );

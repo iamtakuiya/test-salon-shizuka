@@ -10,9 +10,13 @@
 
 .menu__subheading {
   font-family: $font-text;
-  font-size: $fs-sm;
+  font-size: clamp($fs-xs, 2vw, $fs-sm);
   line-height: 1.9;
   letter-spacing: 0.06em;
   color: $color-text-muted;
   text-align: center;
+
+  @media screen and (max-width: 374px) {
+    padding-inline: 0.4rem;
+  }
 }

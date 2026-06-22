@@ -35,7 +35,7 @@ export default function MenuSection() {
       className={styles.menu}
     >
       <Container className={styles.menu__container}>
-        <Stack gap="xl">
+        <Stack gap="xl" className={styles.menu__stack}>
 
           <MenuHeader />
 
