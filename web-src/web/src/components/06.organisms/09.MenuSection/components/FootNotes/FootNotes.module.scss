@@ -6,6 +6,10 @@
   gap: $space-1;
   padding-inline: 1rem;
   
+  @media screen and (max-width: 374px) {
+    margin-top: -1rem;
+  }
+  
   @include tablet {
     align-items: flex-end;
     padding-inline: unset;

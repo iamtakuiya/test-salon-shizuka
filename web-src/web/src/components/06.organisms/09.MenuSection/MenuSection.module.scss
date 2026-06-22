@@ -34,7 +34,6 @@
 .menu__columns {
   display: flex;
   flex-direction: column;
-  gap: $space-8;
 
   @include tablet {
     flex-direction: row;

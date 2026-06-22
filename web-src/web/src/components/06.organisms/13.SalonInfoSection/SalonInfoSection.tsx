@@ -14,7 +14,7 @@ export default function SalonInfoSection() {
   return (
     <Section id="info" spacing="lg" aria-label="Salon Info" className={styles.salonInfo}>
       <Container size="xl">
-        <Stack gap="xl">
+        <Stack gap="xl" className={styles.salonInfo__stack}>
           <SalonInfoHeader />
 
           {/* Two columns on laptop+, stacked on mobile/tablet — a custom

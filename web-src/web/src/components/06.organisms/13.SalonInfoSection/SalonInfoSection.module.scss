@@ -14,6 +14,13 @@
   }
 }
 
+.salonInfo__stack {
+  gap: 2rem;
+
+  @include tablet {
+    gap: $space-16;
+  }
+}
 
 // ─── Header ───────────────────────────────────────────
 .salonInfo__header {
@@ -31,7 +38,7 @@
 
 .salonInfo__tagline {
   font-family: $font-text;
-  font-size: clamp($fs-base, 4vw, $fs-lg);
+  font-size: clamp($fs-xs, 4vw, $fs-lg);
   color: $color-text;
   letter-spacing: 0.04em;
 }
