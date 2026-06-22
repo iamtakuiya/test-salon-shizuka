@@ -1,0 +1,57 @@
+// No @use — abstracts injected by vite.config.ts
+
+// ─── Section ─────────────────────────────────────────
+.menu {
+  // background-color: $color-accent-90; // Fix: was commented out
+  background-color: $color-bg; // Fix: was commented out
+}
+
+.menu__container {
+  padding: 1rem 0.5rem;
+
+  @include tablet {
+    padding: 7rem 2rem;
+  }
+
+  @include laptop {
+    padding: 7rem 4rem;
+  }
+}
+
+// ─── Two-column layout ───────────────────────────────
+.menu__columns {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+    padding-block: $space-8;
+  }
+}
+
+.menu__column {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+
+  @include tablet {
+    flex: 1;
+    padding-inline: $space-8;
+  }
+}
+
+// Vertical rule between columns — desktop only
+.menu__divider {
+  display: none;
+
+  @include tablet {
+    display: block;
+    width: 1px;
+    align-self: stretch;
+    background-color: $color-border;
+    flex-shrink: 0;
+  }
+}

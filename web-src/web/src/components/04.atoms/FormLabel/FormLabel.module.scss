@@ -1,0 +1,10 @@
+// ─── Field label ─────────────────────────────────────────────────────────────
+.fieldLabel {
+  display: block;
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+  margin-bottom: $space-4;
+}

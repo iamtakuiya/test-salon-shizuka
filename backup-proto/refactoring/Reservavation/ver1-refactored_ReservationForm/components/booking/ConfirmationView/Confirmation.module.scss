@@ -1,0 +1,69 @@
+// ─── Confirmation view ────────────────────────────────────────────────────────
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+}
+
+.confirmation__table {
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  overflow: hidden;
+}
+
+.confirmation__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $space-6;
+  padding: $space-4 $space-6;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &--total {
+    background: $color-accent-90;
+  }
+}
+
+.confirmation__label {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.08em;
+  color: $color-text-muted;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.confirmation__value {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  color: $color-text;
+  letter-spacing: 0.06em;
+  text-align: right;
+}
+
+.confirmation__totalVal {
+  font-family: $font-title;
+  font-size: $fs-xl;
+  color: $color-text;
+}
+
+.confirmation__error {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  color: $color-error;
+  letter-spacing: 0.04em;
+}
+
+.confirmation__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $space-4;
+  padding-top: $space-4;
+  border-top: 1px solid $color-border;
+}

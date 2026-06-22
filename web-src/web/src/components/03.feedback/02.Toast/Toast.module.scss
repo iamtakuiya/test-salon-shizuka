@@ -1,0 +1,53 @@
+// Toast positioning (fixed, bottom-right) is the container's job,
+// not Toast's — the parent positions it, Toast only styles itself.
+
+.toast {
+  padding: $space-3 $space-6;
+  border-radius: $radius-md;
+  box-shadow: 0 4px 16px rgba($color-text, 0.12);
+  min-width: 280px;
+  max-width: 400px;
+  pointer-events: auto;
+}
+
+// ── Variants ─────────────────────────────────────────
+.toast--success {
+  background-color: #2E5238;
+  color: $color-white;
+}
+
+.toast--error {
+  background-color: #8B1A10;
+  color: $color-white;
+}
+
+.toast--info {
+  background-color: $color-text;
+  color: $color-white;
+}
+
+// ── Inner ─────────────────────────────────────────────
+.toast__icon {
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.toast__message {
+  @include font-sans($fs-sm);
+  color: inherit;
+  line-height: 1.5;
+}
+
+.toast__close {
+  flex-shrink: 0;
+  padding: $space-1;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity $transition-fast;
+  @include focus-ring;
+
+  &:hover {
+    opacity: 1;
+  }
+}

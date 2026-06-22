@@ -1,0 +1,9 @@
+.inlineError {
+  @include font-sans($fs-xs);
+  color: #C0392B;
+  margin-top: $space-1;
+  line-height: 1.4;
+
+  // Ensure it doesn't shift layout when it appears
+  min-height: 1.4em;
+}

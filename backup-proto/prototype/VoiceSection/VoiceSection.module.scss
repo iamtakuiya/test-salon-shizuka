@@ -1,0 +1,103 @@
+// No @use — abstracts injected by vite.config.ts
+
+.voice__heading {
+  font-family: $font-title;
+  font-size: clamp($fs-2xl, 4vw, $fs-4xl);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+// ─── Grid ─────────────────────────────────────────────
+.voice__grid {
+  display: grid;
+  gap: $space-6;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include laptop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// ─── Card ─────────────────────────────────────────────
+.voice__card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding: $space-8;
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  transition: box-shadow $transition-base, transform $transition-base;
+
+  &:hover {
+    box-shadow: 0 4px 24px rgba($color-text, 0.08);
+    transform: translateY(-2px);
+  }
+}
+
+.voice__cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+}
+
+.voice__stars {
+  display: flex;
+  gap: 2px;
+}
+
+.voice__star {
+  font-size: $fs-sm;
+  color: $color-border;
+  line-height: 1;
+
+  &--filled {
+    color: $color-accent;
+  }
+}
+
+.voice__service {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.08em;
+  color: $color-text-muted;
+  text-align: right;
+}
+
+.voice__comment {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  line-height: 2;
+  color: $color-text;
+  letter-spacing: 0.06em;
+  flex: 1;
+  margin: 0;
+}
+
+.voice__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $space-4;
+  border-top: 1px solid $color-border;
+}
+
+.voice__name {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  font-weight: 400;
+  color: $color-text;
+  letter-spacing: 0.08em;
+}
+
+.voice__date {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  color: $color-text-muted;
+  letter-spacing: 0.05em;
+}

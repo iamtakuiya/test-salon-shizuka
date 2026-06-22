@@ -1,0 +1,29 @@
+.emptyState {
+  padding-block: $space-16;
+  text-align: center;
+}
+
+.emptyState__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: $color-border;
+}
+
+.emptyState__title {
+  @include font-serif($fs-lg);
+  color: $color-text-muted;
+}
+
+.emptyState__description {
+  @include font-sans($fs-sm);
+  color: $color-text-muted;
+  opacity: 0.7;
+  max-width: 320px;
+}
+
+.emptyState__action {
+  margin-top: $space-2;
+}

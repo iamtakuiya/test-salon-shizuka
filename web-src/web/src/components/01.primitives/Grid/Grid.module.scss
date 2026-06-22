@@ -1,0 +1,32 @@
+// src/components/primitives/Grid/Grid.module.scss
+// No @use — abstracts injected by vite.config.ts additionalData
+
+// ── Base ─────────────────────────────────────────────
+// Column counts come in via CSS custom properties set inline by Grid.tsx.
+// --grid-cols-tablet / --grid-cols-laptop are optional — when absent,
+// the base --grid-cols value carries through to every breakpoint.
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols, 1), 1fr);
+
+  @include tablet {
+    grid-template-columns: repeat(
+      var(--grid-cols-tablet, var(--grid-cols, 1)),
+      1fr
+    );
+  }
+
+  @include laptop {
+    grid-template-columns: repeat(
+      var(--grid-cols-laptop, var(--grid-cols-tablet, var(--grid-cols, 1))),
+      1fr
+    );
+  }
+}
+
+// ── Gap ──────────────────────────────────────────────
+.gap--xs { gap: $space-2; }
+.gap--sm { gap: $space-4; }
+.gap--md { gap: $space-6; }
+.gap--lg { gap: $space-8; }
+.gap--xl { gap: $space-12; }

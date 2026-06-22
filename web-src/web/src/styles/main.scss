@@ -1,0 +1,17 @@
+// 7-1 Sass Architecture — import order matters
+
+// Abstracts first — must come before everything
+@use 'abstracts/index' as a;
+
+// Base
+@use 'base/index';
+
+// Layout
+@use 'layout/grid';
+@use 'layout/header';
+
+// Components
+@use 'components/button';
+
+// Pages
+@use 'pages/home';

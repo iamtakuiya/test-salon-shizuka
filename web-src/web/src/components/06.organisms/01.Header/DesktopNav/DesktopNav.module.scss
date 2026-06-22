@@ -1,0 +1,33 @@
+.nav {
+  display: none;
+
+  @include laptop {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.nav__list {
+  gap: $space-6;
+}
+
+.nav__item {
+  list-style: none;
+}
+
+.nav__link {
+  @include font-text($fs-xs, 400);
+  // letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-bg;
+  transition: color $transition-base;
+  white-space: nowrap;
+
+  &--active {
+    color: $color-text; // color when window is scrolling
+  }
+
+  &:hover {
+    color: $color-accent;
+  }
+}

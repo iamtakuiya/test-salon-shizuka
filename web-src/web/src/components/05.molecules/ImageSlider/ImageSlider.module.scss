@@ -1,0 +1,96 @@
+// No @use — abstracts injected by vite.config.ts
+
+// ─── Shell ────────────────────────────────────────────
+.slider {
+  width: 100%;
+}
+
+.viewport {
+  overflow: hidden;
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+}
+
+.slider__slide {
+  // GSAP will set opacity/transform; don't set will-change here to
+  // avoid creating an unnecessary stacking context on every slide.
+}
+
+// ─── Default arrow layout (used when no children render-prop) ─────────
+.slider__defaultArrows {
+  display: flex;
+  justify-content: center;
+  gap: $space-3;
+  margin-top: $space-6;
+}
+
+// ─── Arrow button ─────────────────────────────────────
+// Shared styles — section modules can override via className
+.slider__arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: $color-white;
+  border: 1px solid $color-border;
+  color: $color-text;
+  font-size: $fs-base;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background-color $transition-base,
+    border-color $transition-base,
+    color $transition-base,
+    transform $transition-fast;
+
+  &:hover:not(:disabled) {
+    background-color: $color-accent;
+    border-color: $color-accent;
+    color: $color-white;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.92);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+// ─── Dot pagination ────────────────────────────────────
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $space-2;
+  margin-top: $space-8;
+}
+
+.slider__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-full;
+  background: $color-border;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    background-color $transition-base,
+    width $transition-base;
+
+  &:hover {
+    background: $color-accent-65;
+  }
+
+  // Active: pill shape
+  &--active {
+    width: 24px;
+    background: $color-accent;
+  }
+}

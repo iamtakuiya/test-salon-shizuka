@@ -1,0 +1,16 @@
+// No @use — abstracts injected by vite.config.ts
+
+.voice__heading {
+  font-family: $font-title;
+  font-size: clamp($fs-2xl, 4vw, $fs-4xl);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.voice__container {
+
+  @include laptop {
+    padding: $space-32 $space-16;
+  }
+}

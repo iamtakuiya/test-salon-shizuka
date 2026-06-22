@@ -1,0 +1,140 @@
+// No @use — abstracts injected by vite.config.ts
+
+// ─── Shared heights ──────────────────────────────────
+// Defined once here so SCSS swap matrix and button sizing stay in sync.
+$h-inactive: 140px;
+$h-active:   380px;
+
+// ─── Grid container ──────────────────────────────────
+.avatarGrid {
+  // Mobile: 2-column grid — active item spans full width on bottom row
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-3;
+  width: 100%;
+  flex-shrink: 0;
+
+  // Animate grid-template-areas and row heights smoothly
+  transition:
+    grid-template-areas 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    grid-template-rows  0.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+  @include laptop {
+    // Desktop: single column — active item taller, others shorter
+    grid-template-columns: 1fr;
+    width: 320px;
+  }
+}
+
+// ─── Mobile swap matrix ─── (data-active on .avatarGrid) ────────────────────
+// When item 0 is active → float inactive items to the top row,
+// active item spans both columns in the bottom row.
+.avatarGrid[data-active='0'] {
+  grid-template-rows: $h-inactive $h-active;
+  grid-template-areas:
+    'img1 img2'
+    'img0 img0';
+
+  @include laptop {
+    grid-template-rows: $h-active $h-inactive $h-inactive;
+    grid-template-areas:
+      'img0'
+      'img1'
+      'img2';
+  }
+}
+
+.avatarGrid[data-active='1'] {
+  grid-template-rows: $h-inactive $h-active;
+  grid-template-areas:
+    'img0 img2'
+    'img1 img1';
+
+  @include laptop {
+    grid-template-rows: $h-inactive $h-active $h-inactive;
+    grid-template-areas:
+      'img0'
+      'img1'
+      'img2';
+  }
+}
+
+.avatarGrid[data-active='2'] {
+  grid-template-rows: $h-inactive $h-active;
+  grid-template-areas:
+    'img0 img1'
+    'img2 img2';
+
+  @include laptop {
+    grid-template-rows: $h-inactive $h-inactive $h-active;
+    grid-template-areas:
+      'img0'
+      'img1'
+      'img2';
+  }
+}
+
+// ─── Avatar button ───────────────────────────────────
+.avatarBtn {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: $radius-sm;
+
+  // Height transitions to match grid row changes
+  height: $h-inactive;
+  transition:
+    height  0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.3s ease;
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+  }
+
+  // Reduced-motion: disable height/grid transitions
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.avatarBtn--active {
+  height: $h-active;
+  cursor: default;
+}
+
+// ─── Portrait image ──────────────────────────────────
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  display: block;
+  transition: transform 0.4s ease;
+  
+  border-radius: 10px;
+  .avatarBtn:not(.avatarBtn--active):hover & {
+    transform: scale(1.04);
+  }
+}
+
+// ─── Inactive name tag ───────────────────────────────
+// Appears on collapsed portraits so the user can still identify them
+.avatarName {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.1em;
+  color: rgba($color-white, 0.85);
+  background: linear-gradient(transparent, rgba($color-text, 0.75));
+  padding: $space-4 $space-2 $space-2;
+  pointer-events: none;
+}

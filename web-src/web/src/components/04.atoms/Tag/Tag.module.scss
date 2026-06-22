@@ -1,0 +1,75 @@
+// Tag.module.scss
+
+// ── Base ─────────────────────────────────────────────
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-full;
+  font-family: $font-sans;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+}
+
+// ── Size ─────────────────────────────────────────────
+.tag--sm {
+  padding: $space-1 $space-3;
+  font-size: $fs-xs;
+}
+
+.tag--md {
+  padding: $space-2 $space-4;
+  font-size: $fs-sm;
+}
+
+// ── Variants ─────────────────────────────────────────
+
+// Menu category — muted border, fills on active
+.tag--category {
+  background-color: transparent;
+  color: $color-text-muted;
+  border: 1px solid $color-border;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+}
+
+.tag--category.tag--active {
+  background-color: $color-accent;
+  border-color: $color-accent;
+  color: $color-white;
+}
+
+// Section label — "CONCEPT", "MENU" etc. — all caps, gold, no border
+.tag--label {
+  background-color: transparent;
+  color: $color-accent;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: $fs-xs;
+  padding-inline: 0;         // flush — let parent control spacing
+}
+
+// Price — accent background
+.tag--price {
+  background-color: rgba($color-accent, 0.12);
+  color: $color-accent-dark;
+  border: 1px solid rgba($color-accent, 0.3);
+}
+
+// Status — open/closed badge (color comes from className override)
+.tag--status {
+  background-color: transparent;
+  border: 1px solid currentColor;
+  font-size: $fs-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}

@@ -1,0 +1,63 @@
+// ─── Contact form ─────────────────────────────────────────────────────────────
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+    background: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $space-6;
+}
+
+.contactForm__field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.contactForm__fieldLabel {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.08em;
+  color: $color-text-muted;
+}
+
+.contactForm__required {
+  color: $color-accent;
+  margin-left: 2px;
+}
+
+.contactForm__input {
+  width: 100%;
+  height: 44px;
+  padding: 0 $space-4;
+  font-family: $font-input;
+  font-size: $fs-sm;
+  color: $color-text;
+  background: $color-bg;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  transition: border-color $transition-base;
+
+  &::placeholder {
+    color: $color-text-muted;
+    opacity: 0.6;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-accent;
+  }
+
+  &--error {
+    border-color: $color-error;
+  }
+}
+
+.contactForm__error {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  color: $color-error;
+  letter-spacing: 0.04em;
+}

@@ -1,0 +1,176 @@
+
+<style>
+.wrap { padding: 1rem 0; }
+.tabs { display: flex; gap: 6px; margin-bottom: 1.25rem; flex-wrap: wrap; }
+.tab { font-size: 13px; padding: 5px 14px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); color: var(--color-text-secondary); cursor: pointer; transition: all 0.15s; }
+.tab.active { background: var(--color-background-secondary); color: var(--color-text-primary); border-color: var(--color-border-primary); font-weight: 500; }
+.panel { display: none; }
+.panel.active { display: block; }
+.label { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.07em; margin: 1.25rem 0 0.6rem; }
+.label:first-child { margin-top: 0; }
+.section-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; padding: 10px 14px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary); }
+.sec-num { font-size: 11px; color: var(--color-text-secondary); min-width: 18px; padding-top: 1px; }
+.sec-body { flex: 1; }
+.sec-name { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+.sec-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.55; }
+.sec-tag { font-size: 11px; padding: 1px 8px; border-radius: 10px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); margin-left: 8px; white-space: nowrap; }
+.copy-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; padding: 12px 14px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary); }
+.copy-section { font-size: 11px; color: var(--color-text-secondary); min-width: 80px; padding-top: 2px; }
+.copy-text { font-size: 14px; color: var(--color-text-primary); line-height: 1.65; }
+.copy-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 3px; line-height: 1.5; }
+.swatch-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.swatch { border-radius: var(--border-radius-md); padding: 14px 16px; min-width: 120px; }
+.swatch-name { font-size: 12px; font-weight: 500; margin-bottom: 2px; }
+.swatch-hex { font-size: 11px; opacity: 0.75; }
+.swatch-role { font-size: 11px; margin-top: 4px; opacity: 0.8; }
+.font-row { padding: 12px 14px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary); margin-bottom: 8px; }
+.font-label { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 6px; }
+.font-sample-jp { font-size: 20px; color: var(--color-text-primary); line-height: 1.5; letter-spacing: 0.08em; }
+.font-sample-en { font-size: 18px; color: var(--color-text-secondary); letter-spacing: 0.12em; }
+.font-name { font-size: 11px; color: var(--color-text-secondary); margin-top: 4px; }
+.note { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; padding: 8px 12px; border-left: 2px solid var(--color-border-secondary); border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin: 8px 0; }
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 1rem 0; }
+</style>
+
+<div class="wrap">
+<div class="tabs">
+  <button class="tab active" onclick="show('structure', this)">セクション構成</button>
+  <button class="tab" onclick="show('copy', this)">コピー案</button>
+  <button class="tab" onclick="show('color', this)">カラー・フォント</button>
+</div>
+
+<div id="panel-structure" class="panel active">
+  <div class="label">ページ構成（上から順に）</div>
+  <div class="section-row"><div class="sec-num">01</div><div class="sec-body"><div class="sec-name" style="display:flex;align-items:center">Hero <span class="sec-tag">最重要</span></div><div class="sec-desc">全画面。サロン名・キャッチコピー・「予約する」CTAボタン。麻衣さんが夜中にスマホで開いたとき、3秒で「ここだ」と思わせる。背景は淡いベージュ＋写真1枚。</div></div></div>
+  <div class="section-row"><div class="sec-num">02</div><div class="sec-body"><div class="sec-name">コンセプト</div><div class="sec-desc">「なぜこのサロンなのか」を短いテキストで伝える。2カラム（テキスト左・写真右）。産後・ダメージ・一対一という麻衣さんの不安に直接答える言葉を置く。</div></div></div>
+  <div class="section-row"><div class="sec-num">03</div><div class="sec-body"><div class="sec-name">メニュー・料金</div><div class="sec-desc">料金の不透明さを解消するセクション。シンプルなカード3〜4枚（カット・カラー・トリートメント・ヘッドスパ）。価格を明示する。</div></div></div>
+  <div class="section-row"><div class="sec-num">04</div><div class="sec-body"><div class="sec-name">施術の流れ</div><div class="sec-desc">「初めてで不安」な人向けに、来店〜退店までの流れを4ステップで図解。安心感を与えるセクション。</div></div></div>
+  <div class="section-row"><div class="sec-num">05</div><div class="sec-body"><div class="sec-name">オーナー紹介</div><div class="sec-desc">顔写真＋一言プロフィール。「人柄が見える」ことが信頼に直結する。経歴より想いを書く。</div></div></div>
+  <div class="section-row"><div class="sec-num">06</div><div class="sec-body"><div class="sec-name">お客様の声 <span class="sec-tag">信頼構築</span></div><div class="sec-desc">3〜4件のレビュー。産後・ダメージ・ゆっくり話せたなど、ペルソナが共感できる内容に絞る。顔写真なし・名前イニシャルでOK。</div></div></div>
+  <div class="section-row"><div class="sec-num">07</div><div class="sec-body"><div class="sec-name" style="display:flex;align-items:center">予約フォーム <span class="sec-tag">ゴール</span></div><div class="sec-desc">Formspreeを使ったシンプルなフォーム。名前・連絡先・希望日時・メニュー選択・メッセージ欄。「24時間以内に返信します」の一言を添える。</div></div></div>
+  <div class="section-row"><div class="sec-num">08</div><div class="sec-body"><div class="sec-name">アクセス・営業時間</div><div class="sec-desc">Google Mapsの埋め込み＋営業時間テーブル。定休日・駐車場情報も明記。</div></div></div>
+
+  <div class="note">全セクション共通：スマホファースト設計。麻衣さんは深夜にスマホで見るので、フォントサイズ・タップターゲット・読み込み速度を最優先する。</div>
+</div>
+
+<div id="panel-copy" class="panel">
+  <div class="label">各セクションのコピー案</div>
+
+  <div class="copy-row">
+    <div class="copy-section">Hero<br>キャッチ</div>
+    <div><div class="copy-text">あなたの髪と、<br>ゆっくり向き合う時間。</div><div class="copy-sub">サブ：完全予約制・プライベートサロン SHIZUKA</div></div>
+  </div>
+
+  <div class="copy-row">
+    <div class="copy-section">CTAボタン</div>
+    <div><div class="copy-text">ご予約はこちら</div><div class="copy-sub">副ボタン：メニューを見る</div></div>
+  </div>
+
+  <div class="copy-row">
+    <div class="copy-section">コンセプト<br>見出し</div>
+    <div><div class="copy-text">一対一だから、<br>話せることがある。</div><div class="copy-sub">本文：産後の変化、ダメージのお悩み、「なんとなく似合わなくなった」という感覚。チェーン店では言いにくいことも、ここではゆっくり話してください。</div></div>
+  </div>
+
+  <div class="copy-row">
+    <div class="copy-section">メニュー<br>見出し</div>
+    <div><div class="copy-text">メニュー・料金</div><div class="copy-sub">追加料金なし。当日の相談でメニューを変更することも可能です。</div></div>
+  </div>
+
+  <div class="copy-row">
+    <div class="copy-section">流れ<br>見出し</div>
+    <div><div class="copy-text">はじめての方へ</div><div class="copy-sub">ステップ：ご予約 → ご来店・カウンセリング → 施術 → スタイリング・アドバイス</div></div>
+  </div>
+
+  <div class="copy-row">
+    <div class="copy-section">オーナー<br>見出し</div>
+    <div><div class="copy-text">担当スタイリスト</div><div class="copy-sub">本文例：美容師歴12年。大型サロンで経験を積んだのち、「お客様一人ひとりとじっくり向き合いたい」という想いで独立しました。</div></div>
+  </div>
+
+  <div class="copy-row">
+    <div class="copy-section">お客様の声<br>例文</div>
+    <div><div class="copy-text">産後に髪が細くなり悩んでいましたが、丁寧にカウンセリングしていただき、扱いやすい髪になりました。— M.T. 30代</div></div>
+  </div>
+
+  <div class="copy-row">
+    <div class="copy-section">予約フォーム<br>見出し</div>
+    <div><div class="copy-text">ご予約・お問い合わせ</div><div class="copy-sub">送信後24時間以内にご連絡いたします。まずはお気軽にどうぞ。</div></div>
+  </div>
+</div>
+
+<div id="panel-color" class="panel">
+  <div class="label">カラーパレット</div>
+  <div class="swatch-row">
+    <div class="swatch" style="background:#F5F0EB; border: 0.5px solid #D3C9BE;">
+      <div class="swatch-name" style="color:#6B5C4E">ベージュ</div>
+      <div class="swatch-hex" style="color:#6B5C4E">#F5F0EB</div>
+      <div class="swatch-role" style="color:#6B5C4E">背景・ベース</div>
+    </div>
+    <div class="swatch" style="background:#FDFBF8; border: 0.5px solid #D3C9BE;">
+      <div class="swatch-name" style="color:#6B5C4E">オフホワイト</div>
+      <div class="swatch-hex" style="color:#6B5C4E">#FDFBF8</div>
+      <div class="swatch-role" style="color:#6B5C4E">カード・セクション</div>
+    </div>
+    <div class="swatch" style="background:#C4A882; border: 0.5px solid #A8906A;">
+      <div class="swatch-name" style="color:#4A3828">ゴールドベージュ</div>
+      <div class="swatch-hex" style="color:#4A3828">#C4A882</div>
+      <div class="swatch-role" style="color:#4A3828">アクセント・ボタン</div>
+    </div>
+    <div class="swatch" style="background:#3D3530; border: 0.5px solid #2A2420;">
+      <div class="swatch-name" style="color:#F5F0EB">ダークブラウン</div>
+      <div class="swatch-hex" style="color:#F5F0EB">#3D3530</div>
+      <div class="swatch-role" style="color:#F5F0EB">テキスト・見出し</div>
+    </div>
+    <div class="swatch" style="background:#8C7B6E; border: 0.5px solid #6B5C4E;">
+      <div class="swatch-name" style="color:#F5F0EB">ミドルブラウン</div>
+      <div class="swatch-hex" style="color:#F5F0EB">#8C7B6E</div>
+      <div class="swatch-role" style="color:#F5F0EB">サブテキスト</div>
+    </div>
+  </div>
+
+  <div class="note">ポイント：白ではなくオフホワイト＆ベージュをベースにすることで、清潔感を保ちながら「温かみ」を演出。ビビッドな色は一切使わない。</div>
+
+  <div class="divider"></div>
+  <div class="label">フォント（Google Fonts）</div>
+
+  <div class="font-row">
+    <div class="font-label">見出し日本語 — Noto Serif JP</div>
+    <div class="font-sample-jp" style="font-family: serif;">あなたの髪と、ゆっくり向き合う時間。</div>
+    <div class="font-name">font-family: 'Noto Serif JP', serif ／ 上品・落ち着き・信頼感</div>
+  </div>
+
+  <div class="font-row">
+    <div class="font-label">ロゴ・英字アクセント — Cormorant Garamond</div>
+    <div class="font-sample-en" style="font-family: serif; letter-spacing: 0.2em;">SHIZUKA</div>
+    <div class="font-name">font-family: 'Cormorant Garamond', serif ／ 高級感・細みのセリフ</div>
+  </div>
+
+  <div class="font-row">
+    <div class="font-label">本文・UI — Noto Sans JP</div>
+    <div class="font-sample-jp" style="font-family: sans-serif; font-size: 15px; letter-spacing: 0.03em;">産後の変化、ダメージのお悩み、お気軽にご相談ください。</div>
+    <div class="font-name">font-family: 'Noto Sans JP', sans-serif ／ 読みやすさ最優先</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="label">デザイン方針まとめ</div>
+  <div class="section-row" style="border-left: 2px solid #C4A882; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;">
+    <div class="sec-body">
+      <div class="sec-desc" style="font-size: 13px; line-height: 1.75;">
+        余白を大きく取る（padding多め）→ 高級感と読みやすさ<br>
+        写真は暗めのオーバーレイで統一 → 文字が映える<br>
+        ボタンはゴールドベージュ＋白文字 → 目立つが派手すぎない<br>
+        アニメーションは最小限（フェードイン程度）→ 落ち着いた雰囲気を守る<br>
+        フォントサイズはスマホ16px以上 → 深夜・暗い場所でも読める
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>

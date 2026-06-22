@@ -1,0 +1,101 @@
+// ─── Sidebar: summary + contact form ─────────────────────────────────────────
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+    background: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $space-6;
+}
+
+.summary__label {
+  display: block;
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+.summary__empty {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  color: $color-text-muted;
+  letter-spacing: 0.04em;
+}
+
+.summary__rows {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.summary__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: $space-4;
+}
+
+.summary__itemName {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  color: $color-text;
+  letter-spacing: 0.04em;
+  // flex: 1;
+  min-width: 0;
+}
+
+.summary__dashed {      
+  flex: 1;
+  border: 1px dashed $color-text;
+  opacity: 0.2;
+}
+
+.summary__itemPrice {
+  font-family: $font-title;
+  font-size: $fs-sm;
+  color: $color-text;
+  flex-shrink: 0;
+}
+
+.summary__divider {
+  height: 1px;
+  background: $color-border;
+}
+
+.summary__totalRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: $space-4;
+}
+
+.summary__totalLabel {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.08em;
+  color: $color-text-muted;
+}
+
+.summary__total {
+  font-family: $font-title;
+  font-size: $fs-2xl;
+  color: $color-text;
+}
+
+.summary__note {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  color: $color-text-muted;
+}

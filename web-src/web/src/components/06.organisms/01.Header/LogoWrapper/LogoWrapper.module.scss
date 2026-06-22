@@ -1,0 +1,9 @@
+.logoWrapper {
+  flex-shrink: 0; // never squish the logo
+}
+
+.logoWrapper__link {
+  display: flex;
+  align-items: center;
+  @include focus-ring;
+}

@@ -1,0 +1,52 @@
+# Development Report – 2026‑06‑02
+
+## Summary
+- Refactored the **Button** atom to import shared SCSS, consolidated prop types, and removed unused imports.
+- Re‑implemented the **Row** primitive with proper `forwardRef`, generic typings, and added comprehensive documentation.
+- Added a new shared stylesheet `styles/components/Button.module.scss` containing all button variant/size styles and a spinner placeholder.
+- Created a **report** directory (`chat-shizuka/report`) and saved this plain‑text summary.
+
+## Detailed Changes
+
+### 1. src/components/atoms/Button/Button.tsx
+- Updated import path to shared stylesheet:
+  ```tsx
+  import styles from '../../../styles/components/Button.module.scss';
+  ```
+- Merged prop definitions into `BaseButtonProps<T>` (adds `children?: ReactNode`).
+- Removed dead imports (`forwardRef`, `ForwardedRef`).
+- Added safe loading‑state class guard.
+- Updated JSDoc/comments for clarity.
+
+### 2. src/components/primitives/Row/Row.tsx
+- Re‑wrote component using `React.forwardRef`.
+- Defined explicit type aliases: `RowGap`, `RowAlign`, `RowJustify`.
+- Added `RowOwnProps<T>` and `RowProps<T>` with proper omission of conflicting keys.
+- Documented component behavior and props.
+- Simplified conditional class handling (`wrap && styles.wrap`).
+- Cast the export to a polymorphic forward‑ref signature.
+
+### 3. src/styles/components/Button.module.scss (new)
+- Moved button styles from the component folder to a centralized styles directory.
+- Includes base `.btn` class, variant modifiers (`btn--primary`, `btn--secondary`, `btn--outline`, `btn--ghost`, `btn--disabled`), size modifiers (`btn--sm`, `btn--md`, `btn--lg`), and a simple spinner (`btn__spinner`) with animation.
+
+### 4. src/report/2026‑06‑02.txt (this file)
+- Provides a concise, human‑readable report of the day’s work.
+
+## Commit Message (suggested)
+```
+refactor: centralise styles & improve typings for Button & Row
+
+- Button
+  • Import shared SCSS from `styles/components/Button.module.scss`.
+  • Consolidate prop types into `BaseButtonProps<T>` (adds children).
+  • Remove unused forwardRef imports and clean loading state handling.
+- Row
+  • Re‑implement with React.forwardRef and explicit generic typings.
+  • Add dedicated type aliases (RowGap, RowAlign, RowJustify) and full docs.
+  • Simplify class composition, ensure proper ref forwarding.
+- Add new shared Button.module.scss with all variant/size styles and a spinner placeholder.
+- Create `src/report` directory and add daily report file.
+```
+
+All TypeScript builds and lint checks now pass with zero errors. The UI continues to render the Button and Row components correctly.

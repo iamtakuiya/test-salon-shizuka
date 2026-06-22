@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Smooth scroll offset for fixed header
+html {
+  scroll-padding-top: 80px;
+}
+
+// Section anchors
+section {
+  @include section-padding;
+}
+
+// Container utility class
+.container {
+  @include container;
+}

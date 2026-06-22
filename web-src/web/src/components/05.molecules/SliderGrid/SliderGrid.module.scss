@@ -1,0 +1,86 @@
+// No @use — abstracts injected by vite.config.ts
+.grid {
+  display: flex;
+  gap: 1rem;
+  // align-items: center;
+  justify-content: flex-start;
+
+  width: max-content;
+}
+
+.gallery {
+  height: 320px;
+  align-items: center;
+
+  @include tablet {
+    height: 526px;
+    gap: 1.5rem;
+  }
+}
+
+.item {
+  position: relative;
+
+  width: 150px;
+  height: 180px;
+  border-radius: $space-2;
+
+
+  overflow: hidden;
+  cursor: pointer;
+
+  opacity: 0.6;
+
+  flex-shrink: 0;
+
+  @include tablet {
+    width: 250px;
+    height: 330px;
+
+    max-height: 426px;
+    max-width: 361px;
+  }
+
+    // Use this if no use GSAP
+  // transition:
+  //   flex-basis 0.8s cubic-bezier(.22,1,.36,1),
+  //   height 0.8s cubic-bezier(.22,1,.36,1),
+  //   opacity 0.8s ease;
+}
+
+.active {
+  opacity: 1;
+}
+
+.item:nth-child(odd) {
+  align-self: flex-start;
+}
+
+.item:nth-child(even) {
+  align-self: flex-end;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: flex-end;
+
+  padding: 1rem;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.45),
+      transparent 55%
+    );
+}

@@ -1,0 +1,41 @@
+=== Project File & Folder Status Report (generated on 2026-06-02) ===
+
+Root: /Users/tk.code/Downloads/chat-shizuka/web-src/unzipped/src
+
+Top‑level directories:
+- components (UI building blocks)
+- animations/gsap (GSAP animation helpers)
+- assets (images)
+- app (Vite entry point)
+- a-scaffold (application scaffolding)
+- config, data, services, styles, types (project config & utilities)
+
+Components directory breakdown (max two levels shown):
+
+components/
+├─ 01.primitives/ (Box, Container, Row, Section, Stack – each with .tsx + .scss)
+├─ 02.surface/ (Surface, Card, Panel, Overlay, Divider – each with component + styles)
+├─ 03.feedback/ (Alert, Toast, EmptyState, LoadingBlock, InlineError)
+├─ atoms/ (Button, Icon, Input, Label, Link, Logo, Tag)
+├─ molecules/ (FormField, MenuCard, NavLink, PriceRow, ReviewCard, ServiceCard, TimeSlot)
+├─ organisms/ (Header, Hero, HospitalitySection, ConceptSection, Footer, GallerySlider, MapHours, MenuSection, NewsletterBanner, OwnerSection, ReservationForm, StyleGuideTeaser, VoiceSection, index.ts)
+│   ├─ 01.Header/ (DesktopNav, Header.module.scss, Header.tsx, LogoWrapper, MobileMenu, SocialLinks)
+│   ├─ 02.Hero/ (Hero.module.scss, Hero.tsx)
+│   ├─ 03.HospitalitySection/ (HospitalityText.module.scss, HospitalityText.tsx)  <-- NEW
+│   └─ … (other organism placeholders)
+├─ templates/ (MainLayout.tsx, MainLayout.module.scss)
+└─ index.ts (exports for atoms, molecules, organisms, etc.)
+
+Recent changes (as tracked by the harness):
+- components/templates/MainLayout/MainLayout.tsx: added import and render of HospitalityText component.
+- components/organisms/index.ts: cleaned comments, now exports Header and Hospitality.
+- components/organisms/03.HospitalitySection/HospitalityText.tsx: vertical rolling animation for three Japanese phrases; mobile‑only animation, static side‑by‑side on larger screens.
+- components/organisms/03.HospitalitySection/HospitalityText.module.scss: styles with media queries for mobile roll and tablet+ layout.
+- Legacy components/Hospitality folder remains but is unused; new section lives under 03.HospitalitySection.
+
+Summary statistics:
+- Approx. 70 folders (recursively under src)
+- Approx. 330 source files (.tsx, .ts, .scss, .css, .js)
+- No missing files or build errors detected after edits.
+
+This log can be used for audit, CI checks, or documentation purposes.

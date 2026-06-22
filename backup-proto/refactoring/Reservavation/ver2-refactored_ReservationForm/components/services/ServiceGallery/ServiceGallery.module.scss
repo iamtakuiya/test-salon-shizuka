@@ -1,0 +1,156 @@
+// ─── Service gallery ─────────────────────────────────────────────────────────
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.gallery__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+// Slider track — default flex strip for mobile / tablet
+.gallery__track {
+  display: flex;
+  gap: $space-4;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Desktop 2×3 grid override
+  &--grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-3;
+    transform: none !important;
+  }
+}
+
+// Individual category card
+.gallery__card {
+  // Mobile: full-width (flex-basis set inline by JS)
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $space-2;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  flex-shrink: 0;
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+    border-radius: $radius-sm;
+  }
+}
+
+.gallery__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: $radius-sm;
+  border: 2px solid transparent;
+  transition: border-color $transition-base, transform $transition-slow;
+  display: block;
+  background: $color-accent-90;
+
+  .gallery__card--active & {
+    border-color: $color-accent;
+    transform: scale(1.02);
+  }
+}
+
+.gallery__imgPlaceholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: $radius-sm;
+  background: linear-gradient(135deg, $color-accent-90 0%, $color-accent-65 100%);
+  border: 2px solid transparent;
+  transition: border-color $transition-base;
+
+  .gallery__card--active & {
+    border-color: $color-accent;
+  }
+}
+
+.gallery__cardEn {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+.gallery__cardName {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+// Slider controls
+.gallery__ctrl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-2 0;
+}
+
+.gallery__dots {
+  display: flex;
+  gap: $space-2;
+  align-items: center;
+}
+
+.gallery__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $color-border;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background $transition-base, transform $transition-base;
+
+  &:hover {
+    background: $color-text-muted;
+  }
+
+  &--active {
+    background: $color-text;
+    transform: scale(1.25);
+  }
+}
+
+.gallery__navs {
+  display: flex;
+  gap: $space-3;
+}
+
+.gallery__navBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $color-border;
+  background: none;
+  cursor: pointer;
+  font-size: $fs-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text;
+  transition: border-color $transition-base, color $transition-base;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}

@@ -1,0 +1,15 @@
+// No @use — abstracts injected by vite.config.ts
+
+// Mobile: avatar grid above content
+// Desktop (≥1024px): avatar grid left, content right, side-by-side
+.voiceInteractive {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+
+  @include laptop {
+    flex-direction: row;
+    align-items: stretch;
+    gap: $space-12;
+  }
+}

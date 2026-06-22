@@ -1,0 +1,64 @@
+// ─── Addon checkbox list ─────────────────────────────────────────────────────
+
+.addonList {
+  display: flex;
+  flex-direction: column;
+    background: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $space-4 $space-6;
+}
+
+.addonList__item {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 0;
+  border-bottom: 1px solid $color-border;
+  cursor: pointer;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &--selected {
+    .addonList__price {
+      color: $color-accent;
+    }
+  }
+}
+
+.addonList__checkbox {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  accent-color: $color-accent;
+  cursor: pointer;
+}
+
+.addonList__name {
+  flex: 1;
+  font-family: $font-text;
+  font-size: $fs-sm;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.addonList__duration {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.04em;
+  color: $color-text-muted;
+  flex-shrink: 0;
+}
+
+.addonList__price {
+  font-family: $font-title;
+  font-size: $fs-base;
+  letter-spacing: 0.04em;
+  color: $color-text;
+  flex-shrink: 0;
+  min-width: 7ch;
+  text-align: right;
+  transition: color $transition-base;
+}

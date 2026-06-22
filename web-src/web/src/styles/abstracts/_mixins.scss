@@ -1,0 +1,90 @@
+@use '../abstracts/variables' as *;
+
+// ─── Breakpoint Mixins ───────────────────────────────
+@mixin tablet {
+  @media (min-width: #{$bp-tablet}) { @content; }
+}
+
+@mixin laptop {
+  @media (min-width: #{$bp-laptop}) { @content; }
+}
+
+@mixin desktop {
+  @media (min-width: #{$bp-desktop}) { @content; }
+}
+
+@mixin mobile-only {
+  @media (max-width: #{$bp-tablet - 1px}) { @content; }
+}
+
+// ─── Typography Helpers ──────────────────────────────
+@mixin font-title($size: $fs-base, $weight: 400, $style: normal) {
+  font-family: $font-title;
+  font-size: $size;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin font-text($size: $fs-base, $weight: 400) {
+  font-family: $font-text;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+// ─── Layout Helpers ──────────────────────────────────
+@mixin container {
+  width: 100%;
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $container-padding;
+
+  @include tablet {
+    padding-inline: $space-8;
+  }
+
+  @include laptop {
+    padding-inline: $space-12;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// ─── Accessibility ───────────────────────────────────
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// ─── Focus Ring ──────────────────────────────────────
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+  }
+}
+
+// ─── Section Spacing ─────────────────────────────────
+@mixin section-padding {
+  padding-block: $space-16;
+
+  @include laptop {
+    padding-block: $space-24;
+  }
+}

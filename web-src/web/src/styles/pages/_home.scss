@@ -1,0 +1,10 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Section-level overrides for the home page
+// Keep component styles in components/
+// Use this file for page-level layout composition only
+
+.home {
+  padding-top: 80px; // Offset for fixed header
+}

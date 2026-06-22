@@ -1,0 +1,317 @@
+// No @use — abstracts injected by vite.config.ts
+
+// GallerySlider owns only its section-level layout.
+// Arrow + dot styles live in Imagegallery.module.scss.
+
+.gallery {
+  padding: 56px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $space-6;
+
+  @include tablet {
+    padding: 7rem 2rem;
+    // gap: $space-12;
+  }
+
+  @include laptop {
+    padding: 7rem 4rem;
+  }
+}
+
+.gallery__header {
+  display: flex;
+  align-items: flex-end;     // bottom-align arrows with heading baseline
+  justify-content: space-between;
+  gap: $space-6;
+  margin-bottom: $space-4;
+
+  @include laptop {
+    margin-bottom: $space-12;
+  }
+}
+
+.gallery__label {
+  font-family: $font-title;
+  font-size: clamp($fs-xs, 2vw, $fs-base);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: $color-text;
+  line-height: 1.1;
+}
+
+.gallery__heading {
+  font-family: $font-title;
+  font-size: clamp($fs-lg, 5vw, $fs-4xl);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: $color-text;
+  line-height: 1.1;
+}
+
+// ─── Default arrow layout (used when no children render-prop) ─────────
+.gallery__controls {
+  display: flex;
+  gap: $space-3;
+  flex-shrink: 0;
+  // Small nudge so arrows sit at the heading cap-height, not the descender
+  padding-bottom: $space-1;
+}
+
+// ─── Arrow button ─────────────────────────────────────
+// Shared styles — section modules can override via className
+.gallery__arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: $color-bg;
+  border: 1px solid $color-border;
+  color: $color-text;
+  font-size: $fs-base;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background-color $transition-base,
+    border-color $transition-base,
+    color $transition-base,
+    transform $transition-fast;
+
+  &:hover:not(:disabled) {
+    background-color: $color-accent;
+    border-color: $color-accent;
+    color: $color-white;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.92);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+
+// ─── Dot pagination ────────────────────────────────────
+.gallery__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $space-2;
+  margin-top: $space-6;
+
+  @include tablet {
+    margin-top: $space-8;
+  }
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-full;
+  background: $color-border;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    background-color $transition-base,
+    width $transition-base;
+
+  &:hover {
+    background: $color-accent-65;
+  }
+
+  // Active: pill shape
+  &--active {
+    width: 24px;
+    background: $color-accent;
+  }
+}
+
+  // Active: pill shape
+.activeDot {
+  width: 24px;
+  height: 8px;
+  background: $color-accent;
+  border-radius: $radius-full;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    background-color $transition-base,
+    width $transition-base;
+}
+
+// img {
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+// }
+
+// .slideContainer {
+//   padding: 56px 8px;
+//   background-color: #fff6eb;
+//   color: #324048;
+//   width: 375px;
+//   height: 472px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   gap: 80px;
+//   /* overflow: hidden; */
+// }
+
+// header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
+
+// .headling {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+// }
+
+// .subheading {
+//   font-size: 12px;
+//   font-weight: 400;
+// }
+
+// .heading {
+//   font-size: 20px;
+//   font-weight: 400;
+// }
+
+// .sliderController {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   flex-shrink: 0;
+//   gap: 1rem;
+// }
+
+// .sliderArrow {
+//   display: grid;
+//   place-items: center;
+//   background: #324048;
+//   color: #fff6eb;
+//   border: #324048;
+//   border-radius: 50%;
+//   width: 31.5px;
+//   height: 31.5px;
+//   aspect-ratio: 1;
+//   font-size: 18px;
+//   padding-bottom: 3px;
+//   cursor: pointer;
+//   transition: all 0.1s ease;
+// }
+
+// .sliderArrow:hover {
+//   background: hsl(41, 78%, 42%);
+//   border: hsl(41, 78%, 42%);
+//   color: #fff6eb;
+// }
+
+// .imageContainer {
+//   width: 100%;
+//   height: 240px;
+//   display: inline-flex;
+//   justify-content: space-between;
+//   flex-shrink: 0;
+//   gap: 1rem;
+//   /* overflow: hidden; */
+// }
+
+// /*  */
+// /* Odd Children (1st, 3rd, 5th, etc.) */
+// .imageWrapper:nth-child(odd) {
+//   align-self: flex-end; /* Aligns odd slides to the top of the flex container */
+//   /* Add any individual odd styles here (e.g., background-color) */
+// }
+
+// /* Even Children (2nd, 4th, 6th, etc.) */
+// .imageWrapper:nth-child(even) {
+//   align-self: flex-start; /* Aligns even slides to the bottom of the flex container */
+//   /* Add any individual even styles here */
+// }
+
+// .imageWrapper {
+//   min-width: 150px;
+//   height: 180px;
+//   background: red;
+//   transition: all 0.2s ease;
+//   position: relative;
+//   display: flex;
+//   align-items: flex-end;
+// }
+
+// .imageWrapper:hover {
+//   min-width: 200px;
+//   /* height: 230px; */
+//   height: 100%;
+// }
+
+// .slideImage {
+// }
+
+// .overlayLabel {
+//   visibility: hidden;
+//   opacity: 0;
+//   display: none;
+//   position: absolute;
+//   inset: 0;
+//   padding: 0.5rem;
+//   color: #fff6eb;
+//   background: linear-gradient(
+//     to top,
+//     rgba(50.184, 64.1376, 72.216, 0.55) 0%,
+//     transparent 55%
+//   );
+//   pointer-events: none;
+//   transition: all 0.2s ease;
+// }
+
+// .imageWrapper:hover .overlayLabel {
+//   display: inline-flex;
+//   align-items: flex-end;
+//   visibility: visible;
+//   opacity: 1;
+// }
+
+// .slideLabel {
+//   font-size: 12px;
+//   font-weight: 400;
+// }
+
+// .dotWrapper {
+//   width: fit-content;
+//   display: inline-flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   flex-shrink: 0;
+//   gap: 0.5rem;
+//   margin: 0 auto;
+// }
+
+// .sliderDots {
+//   display: inline-block;
+//   background: #324048;
+//   color: #fff6eb;
+//   border: #324048;
+//   opacity: 20%;
+//   border-radius: 50%;
+//   aspect-ratio: 1;
+//   padding: 5px;
+//   cursor: pointer;
+// }
+
+// .sliderDots.active {
+//   opacity: 1;
+// }

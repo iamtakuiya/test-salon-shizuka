@@ -1,0 +1,98 @@
+// Hospitality Section styles
+.hospitality {
+  position: relative;
+  overflow: hidden;
+  background: $color-accent-90;
+  padding: $space-4 $space-2;
+  height: 47px;
+  display: grid;
+  place-content: center;
+}
+
+.hospitality__container {
+  position: relative;
+  z-index: 1;
+}
+
+// Option 1
+.rotating {
+  height: 3rem;
+  overflow: hidden;
+}
+
+.rotating__textContainer {
+  display: flex;
+  flex-direction: column;
+
+  @include laptop {
+    width: 100%;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+}
+
+.rotating__phrase {
+  height: 3rem;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-family: $font-title;
+  font-size: clamp(0.75rem, 4vw, 0.95rem); 
+  line-height: 1.5; 
+  white-space: nowrap;
+  color: $color-text;
+  position: relative;
+
+  @include laptop {
+    flex-shrink: 0;
+
+    // This is crucial for desktop device, if not duplicating text is displayed
+    &:last-child {
+      display: none;
+    }
+
+    &:not(:last-child)::after {
+      position: absolute;
+      right: -6%;
+      top: 50%;
+      content: '';
+      width: 1px;
+      height: 60%;
+      background-color: $color-text;
+      transform: translateY(-50%);
+      opacity: 0.3;
+    }
+  }
+}
+
+.divider { 
+  width: 1px;
+  height: 100%;
+  background-color: $color-text;
+  margin-left: 0.5rem;
+  opacity: 0.3; 
+}
+
+// Option 2
+.viewport {
+  height: 100px;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

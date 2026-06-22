@@ -1,0 +1,8 @@
+[build]
+  command = "cd web-src/web && npm ci && npm run build"
+  publish = "web-src/web/dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

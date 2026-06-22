@@ -1,0 +1,21 @@
+// No @use — abstracts injected by vite.config.ts
+
+.footNotes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: $space-1;
+}
+
+.footNote {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  color: $color-text-muted;
+  text-align: center;
+  
+  @include tablet {    
+    text-align: right;
+  }
+}

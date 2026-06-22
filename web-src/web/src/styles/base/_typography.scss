@@ -1,0 +1,22 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+h1, .h1 { @include font-title($fs-4xl); }
+h2, .h2 { @include font-title($fs-3xl); }
+h3, .h3 { @include font-title($fs-2xl); }
+h4, .h4 { @include font-title($fs-xl); }
+
+.text-title   { font-family: $font-title; }
+.text-text    { font-family: $font-text; }
+.text-logo    { font-family: $font-logo; }
+.text-muted   { color: $color-text-muted; }
+.text-accent  { color: $color-accent; }
+.text-center  { text-align: center; }
+
+// Section label style — "CONCEPT", "MENU" etc.
+.section-label {
+  @include font-text($fs-xs, 400);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: $color-accent;
+}

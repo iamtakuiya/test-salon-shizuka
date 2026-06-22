@@ -1,0 +1,94 @@
+// No @use — abstracts injected by vite.config.ts
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  padding-inline: $space-2;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $space-4;
+  padding: $space-4 $space-2;
+  border-bottom: 1px solid $color-border;
+  animation: rowIn 0.35s ease both;
+  animation-delay: calc(var(--row-index, 0) * 50ms);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+@keyframes rowIn {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.rowLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.rowName {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  letter-spacing: 0.08em;
+  color: $color-text;
+}
+
+.rowIncludes {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.1em;
+  color: $color-text-muted;
+}
+
+.rowDesc {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  color: $color-text-muted;
+  margin-top: 2px;
+  padding: $space-1;
+  border-radius: $radius-sm;
+  background-color: $color-bg-97;   
+
+  @include tablet {
+    background-color: $color-bg-97; 
+  }
+  
+  @include laptop {
+    flex-shrink: 0;
+    // white-space: nowrap;
+  }
+}
+
+.rowRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+// Duration is rendered first in the DOM (above price) to match the design
+.rowDuration {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.05em;
+  color: $color-text-muted;
+}
+
+.rowPrice {
+  font-family: $font-title;
+  font-size: $fs-base;
+  letter-spacing: 0.05em;
+  color: $color-text;
+  white-space: nowrap;
+}

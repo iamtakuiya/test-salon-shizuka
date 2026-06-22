@@ -1,0 +1,471 @@
+// No @use — abstracts injected by vite.config.ts
+
+.reservation__heading {
+  font-family: $font-title;
+  font-size: clamp($fs-2xl, 4vw, $fs-4xl);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.reservation__panel {
+  background: $color-white;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $space-8;
+
+  @include laptop {
+    padding: $space-12;
+  }
+}
+
+// ─── Step Indicator ───────────────────────────────────
+.steps {
+  display: flex;
+  gap: 0;
+  counter-reset: steps;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    height: 1px;
+    background: $color-border;
+    z-index: 0;
+  }
+}
+
+.steps__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2;
+  position: relative;
+  z-index: 1;
+  color: $color-text-muted;
+}
+
+.steps__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $color-border;
+  background: $color-white;
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0;
+  transition: all $transition-base;
+}
+
+.steps__label {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.08em;
+
+  @include mobile-only {
+    display: none;
+  }
+}
+
+.steps__item--active {
+  color: $color-accent;
+
+  .steps__num {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: $color-white;
+  }
+}
+
+.steps__item--done {
+  color: $color-text-muted;
+
+  .steps__num {
+    background: $color-text-muted;
+    border-color: $color-text-muted;
+    color: $color-white;
+  }
+}
+
+// ─── Field Label ─────────────────────────────────────
+.reservation__fieldLabel {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.08em;
+  color: $color-text-muted;
+  margin-bottom: $space-3;
+  display: block;
+}
+
+.reservation__required {
+  color: $color-accent;
+  margin-left: 2px;
+}
+
+.reservation__field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.reservation__input {
+  width: 100%;
+  padding: $space-3 $space-4;
+  font-family: $font-input;
+  font-size: $fs-sm;
+  color: $color-text;
+  background: $color-bg;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  transition: border-color $transition-base;
+
+  &::placeholder {
+    color: $color-text-muted;
+    opacity: 0.6;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-accent;
+  }
+
+  &--error {
+    border-color: $color-error;
+  }
+}
+
+.reservation__errorMsg {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  color: $color-error;
+  letter-spacing: 0.04em;
+}
+
+// ─── Footer / Navigation ─────────────────────────────
+.reservation__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $space-4;
+  padding-top: $space-4;
+  border-top: 1px solid $color-border;
+}
+
+.reservation__btn {
+  padding: $space-3 $space-8;
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-white;
+  background: $color-accent;
+  border: 1px solid $color-accent;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: background-color $transition-base;
+
+  &:hover:not(:disabled) {
+    background-color: $color-accent-dark;
+    border-color: $color-accent-dark;
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
+.reservation__btnGhost {
+  padding: $space-3 $space-6;
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+  background: transparent;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    color: $color-text;
+    border-color: $color-text;
+  }
+}
+
+// ─── Calendar ─────────────────────────────────────────
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.calendar__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendar__navBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $fs-lg;
+  color: $color-text;
+  background: none;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+}
+
+.calendar__month {
+  font-family: $font-input;
+  font-size: $fs-sm;
+  letter-spacing: 0.08em;
+  color: $color-text;
+}
+
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.calendar__dayHeader {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.05em;
+  color: $color-text-muted;
+  text-align: center;
+  padding: $space-2 0;
+}
+
+.calendar__day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-input;
+  font-size: $fs-xs;
+  color: $color-text;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover:not(&--disabled) {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &--disabled {
+    color: $color-text-muted;
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &--selected {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: $color-white;
+  }
+}
+
+.calendar__note {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  color: $color-text-muted;
+  letter-spacing: 0.06em;
+  text-align: right;
+}
+
+// ─── Time Slots ───────────────────────────────────────
+.timeSlots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.timeSlots__slot {
+  padding: $space-2 $space-4;
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.08em;
+  color: $color-text;
+  background: none;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &--selected {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: $color-white;
+  }
+}
+
+// ─── Service Grid ─────────────────────────────────────
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-3;
+
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.serviceGrid__card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  padding: $space-4 $space-4;
+  background: $color-bg;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  text-align: left;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $color-accent-65;
+  }
+
+  &--selected {
+    background: $color-accent-90;
+    border-color: $color-accent;
+  }
+}
+
+.serviceGrid__name {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  color: $color-text;
+  letter-spacing: 0.06em;
+}
+
+.serviceGrid__en {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+.serviceGrid__price {
+  font-family: $font-title;
+  font-size: $fs-base;
+  color: $color-text;
+  margin-top: $space-2;
+}
+
+.serviceGrid__duration {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  color: $color-text-muted;
+  letter-spacing: 0.05em;
+}
+
+// ─── Confirmation ─────────────────────────────────────
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  overflow: hidden;
+}
+
+.confirmation__row {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-4;
+  padding: $space-4 $space-6;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &--total {
+    background: $color-accent-90;
+  }
+}
+
+.confirmation__label {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.08em;
+  color: $color-text-muted;
+}
+
+.confirmation__value {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  color: $color-text;
+  letter-spacing: 0.06em;
+  text-align: right;
+}
+
+.confirmation__total {
+  font-family: $font-title;
+  font-size: $fs-xl;
+  color: $color-text;
+}
+
+// ─── Success ─────────────────────────────────────────
+.reservation__success {
+  text-align: center;
+  padding: $space-16 0;
+}
+
+.reservation__successIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: $color-accent;
+  color: $color-white;
+  font-size: $fs-2xl;
+  font-family: $font-input;
+}
+
+.reservation__successHeading {
+  font-family: $font-title;
+  font-size: $fs-2xl;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.reservation__successBody {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  line-height: 2;
+  color: $color-text-muted;
+  letter-spacing: 0.06em;
+}

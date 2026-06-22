@@ -1,0 +1,22 @@
+.card {
+  // Card inherits all appearance from Surface (elevated + radius + padding)
+  // Only card-specific overrides live here
+  transition: box-shadow $transition-base, transform $transition-base;
+}
+
+// Interactive card — hover lift effect
+// Use for clickable cards: ServiceCard, GalleryCard
+.card--int eractive {
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba($color-text, 0.1), 0 2px 6px rgba($color-text, 0.06);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include focus-ring;
+}

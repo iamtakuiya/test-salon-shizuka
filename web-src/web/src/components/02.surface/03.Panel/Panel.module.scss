@@ -1,0 +1,10 @@
+.panel {
+  width: 100%;
+}
+
+// Accent panel — gold left border, used for tips, callouts
+.panel--accent {
+  background-color: rgba($color-accent, 0.06);
+  border-left: 3px solid $color-accent;
+  border-radius: 0 $radius-md $radius-md 0;
+}

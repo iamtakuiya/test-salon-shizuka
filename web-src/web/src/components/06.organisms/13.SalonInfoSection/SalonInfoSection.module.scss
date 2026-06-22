@@ -1,0 +1,561 @@
+// No @use — abstracts injected by vite.config.ts
+
+.salonInfo {
+  // max-width: 1440px;
+  padding: 4rem 0.5rem 8px 0.5rem;
+  // margin: auto;
+
+  @include tablet {
+    // padding: 7rem 2rem;
+  }
+
+  @include laptop {
+    padding: 7rem 4rem;
+  }
+}
+
+
+// ─── Header ───────────────────────────────────────────
+.salonInfo__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-3;
+  text-align: center;
+}
+
+.salonInfo__logo {
+  width: 96px;
+  height: auto;
+}
+
+.salonInfo__tagline {
+  font-family: $font-text;
+  font-size: clamp($fs-base, 4vw, $fs-lg);
+  color: $color-text;
+  letter-spacing: 0.04em;
+}
+
+// ─── Two-column grid ──────────────────────────────────
+.salonInfo__grid {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+  
+  @include laptop {
+    flex-direction: row;
+  }
+}
+
+.salonInfo__left {
+  @include laptop {
+    flex: 1.6;
+    min-width: 0;
+    justify-content: space-between;
+  }
+}
+
+.salonInfo__right {
+  @include laptop {
+    flex: 1;
+    max-width: 420px;
+  }
+}
+
+// ─── Location panel ───────────────────────────────────
+.salonInfo__location {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  @include laptop {
+    height: 100%;
+  }
+}
+
+.salonInfo__mapWrap {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  border-radius: $radius-md;
+
+  @include tablet {
+    border-radius: $radius-lg;
+  }
+}
+
+.salonInfo__mapFrame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: 0;
+
+  @include tablet {
+    min-height: 405px;
+  }
+}
+
+.salonInfo__mapActions {
+  position: absolute;
+  bottom: $space-6;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: $space-2;
+}
+
+.salonInfo__mapActionBtn {
+  display: grid;
+  place-content: center;
+  width: 43px;
+  height: 43px;
+  border-radius: $radius-md;
+  background-color: $color-text-40;
+  transition: opacity $transition-base;
+
+  img {
+    width: 22px;
+    height: 22px;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}
+
+.salonInfo__meta {
+  flex-shrink: 0;
+  padding: $space-6 $space-4;
+  background-color: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  text-align: center;
+
+  @include tablet {
+    width: 280px;
+    padding: $space-8 $space-6;
+    border-radius: $radius-lg;
+  }
+
+  @include laptop {
+    width: 320px;
+  }
+}
+
+// ─── Status badge ─────────────────────────────────────
+.salonInfo__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  width: fit-content;
+  padding: $space-2 $space-4;
+  border-radius: $radius-full;
+  background-color: $color-accent-85;
+  
+  @include tablet {
+    width: 100%;
+  }
+}
+
+.salonInfo__badge--closed {
+  background-color: $color-text-40;
+
+  .salonInfo__badgeJa {
+    color: $color-bg; 
+  }
+
+  .salonInfo__badgeDivider {
+    background-color: rgba($color-bg, 0.5);
+  }
+
+
+  .salonInfo__badgeEn {
+    color: rgba($color-bg, 0.85);
+  }
+}
+
+.salonInfo__badgeDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: $color-accent;
+}
+
+.salonInfo__badgeDot--closed {
+  background-color: $color-text;
+  opacity: 0.6;
+}
+
+.salonInfo__badgeJa {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  font-weight: 600;
+  color: $color-text;
+}
+
+.salonInfo__badgeDivider {
+  width: 1px;
+  height: 16px;
+  background-color: rgba($color-text, 0.5);
+}
+
+.salonInfo__badgeEn {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.08em;
+  color: rgba($color-text, 0.85);
+}
+
+// ─── Access / parking details ─────────────────────────
+.salonInfo__metaGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2;
+}
+
+.salonInfo__metaTitle {
+  font-family: $font-title;
+  font-size: $fs-md;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.salonInfo__metaList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  list-style: none;
+
+  li {
+    font-family: $font-text;
+    font-size: $fs-xs;
+    color: $color-text-muted;
+    letter-spacing: 0.04em;
+  }
+}
+
+// ─── Hours panel ───────────────────────────────────────
+.hours {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+
+  @include tablet {
+    border-radius: $radius-lg;
+  }
+}
+
+.hours__inner {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  padding: $space-3 $space-2;
+
+  @include tablet {
+    padding: $space-6 $space-8;
+  }
+}
+
+.hours__title {
+  font-family: $font-title;
+  font-size: $fs-md;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.hours__grid {
+  display: flex;
+  gap: $space-2;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  padding: $space-1 $space-1 $space-3;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.hours__card {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-1;
+  scroll-snap-align: start;
+}
+
+.hours__day {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.08em;
+  color: $color-text-muted;
+}
+
+.hours__timeBox {
+  width: 90px;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: $radius-sm;
+  background-color: $color-accent-85;
+  transition: transform $transition-base;
+
+  @include mobile-only {
+    width: 60px;
+    height: 80px;
+  }
+
+  &:hover {
+    transform: scale(0.98);
+  }
+}
+
+.hours__timeBox--closed {
+  background-color: $color-text-40;
+}
+
+.hours__timeBox--weekend {
+  background-image: linear-gradient(
+    to bottom,
+    $color-accent-90 0%,
+    $color-accent-90 20%,
+    transparent 20%,
+    transparent 90%,
+    $color-accent-85 90%,
+    $color-accent-85 100%
+  );
+}
+
+.hours__status,
+.hours__time {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  font-weight: 600;
+  color: $color-text;
+}
+
+.hours__timeBox--closed .hours__status {
+  color: $color-bg;
+}
+
+// Mobile-only pagination dots — tablet+ shows all 7 cards with no scroll
+.hours__dots {
+  display: flex;
+  justify-content: center;
+  gap: $space-2;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.hours__dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: $color-border;
+  cursor: pointer;
+  transition: background-color $transition-base, transform $transition-base;
+
+  &--active {
+    background-color: $color-accent;
+    transform: scale(1.3);
+  }
+}
+
+.hours__closed {
+  padding: $space-3 $space-2;
+  border-top: 1px solid $color-border;
+
+  @include tablet {
+    padding: $space-4 $space-8;
+  }
+}
+
+.hours__closedTitle {
+  font-family: $font-title;
+  font-size: $fs-sm;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: $color-text;
+  margin-bottom: $space-1;
+}
+
+.hours__closedNote {
+  font-family: $font-text;
+  font-size: $fs-xs;
+  color: $color-text-muted;
+  letter-spacing: 0.04em;
+}
+
+// ─── Contact panel ─────────────────────────────────────
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+  padding: $space-6;
+  background-color: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+
+  @include tablet {
+    padding: $space-8;
+    border-radius: $radius-lg;
+  }
+}
+
+.contact__title {
+  font-family: $font-title;
+  font-size: $fs-lg;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: $color-text;
+  padding-bottom: $space-3;
+  border-bottom: 1px solid $color-border;
+}
+
+.contact__list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.contact__row {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.contact__label {
+  font-family: $font-title;
+  font-size: $fs-base;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.contact__value {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  color: $color-text-muted;
+  letter-spacing: 0.04em;
+}
+
+.contact__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  border: 1px solid $color-text;
+  border-radius: $radius-full;
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-text;
+  transition: background-color $transition-base, color $transition-base;
+
+  &:hover {
+    background-color: $color-text;
+    color: $color-bg
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}
+
+// ─── Payments panel ────────────────────────────────────
+.payments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-6;
+  padding: $space-6;
+  background-color: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+
+  @include tablet {
+    padding: $space-8;
+    border-radius: $radius-lg;
+  }
+}
+
+.payments__title {
+  font-family: $font-title;
+  font-size: $fs-md;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.payments__grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: $space-4;
+}
+
+.payments__logo {
+  width: 56px;
+  height: auto;
+
+  @include tablet {
+    width: 64px;
+  }
+}
+
+.payments__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  background-color: $color-text-15;
+  border: 1px solid $color-text-15;
+  border-radius: $radius-full;
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-bg;
+  transition: background-color $transition-base, border-color $transition-base;
+
+  &:hover {
+    background-color: $color-text-30;
+    border-color: $color-text-30;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+  }
+}

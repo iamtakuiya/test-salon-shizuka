@@ -1,0 +1,16 @@
+// Convert px to rem
+@function rem($px) {
+  @return ($px / 16) * 1rem;
+}
+
+// Clamp fluid type: min size at mobile, max size at desktop
+@function fluid($min-px, $max-px, $min-vw: 375, $max-vw: 1280) {
+  $slope: ($max-px - $min-px) / ($max-vw - $min-vw);
+  $intercept: $min-px - ($slope * $min-vw);
+
+  @return clamp(
+    #{rem($min-px)},
+    #{$slope * 100}vw + #{rem($intercept)},
+    #{rem($max-px)}
+  );
+}

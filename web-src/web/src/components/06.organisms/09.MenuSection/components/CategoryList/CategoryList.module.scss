@@ -1,0 +1,15 @@
+// No @use — abstracts injected by vite.config.ts
+
+// On mobile, only the panel that matches the active tab is shown.
+// On tablet+, all panels are visible regardless of this class.
+.panelHiddenMobile {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.panelActiveMobile {
+  display: block;
+}

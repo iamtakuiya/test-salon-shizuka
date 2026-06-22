@@ -1,0 +1,20 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// .header {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   z-index: $z-nav;
+//   height: 80px;
+//   @include flex-between;
+//   padding-inline: $container-padding;
+//   background-color: rgba($color-bg, 0.95);
+//   backdrop-filter: blur(8px);
+//   border-bottom: 1px solid $color-border;
+
+//   @include laptop {
+//     padding-inline: $space-12;
+//   }
+// }

@@ -1,0 +1,177 @@
+// No @use — abstracts injected by vite.config.ts;
+.owner {
+  @include section-padding;
+
+
+  @include tablet {
+    padding: 7rem 2rem;
+    height: 918px;
+  }
+  
+  @include laptop {
+    padding: 7rem 4rem;
+    height: 1136px;
+  }
+}
+
+.owner__grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-4;
+  position: relative;
+  padding: 4rem 0;
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: 50% 55%;
+
+    align-items: start;
+    padding-bottom: 10rem;
+  }
+
+  @include laptop {
+    grid-template-columns: 45% 55%;
+
+    padding-bottom: 6rem;
+  }
+
+  @include desktop {
+    grid-template-columns: 40% 60%;
+  }
+}
+
+// ─── Text ─────────────────────────────────────────────
+.owner__headline {
+  order: 1;
+  gap: 60px;
+  padding-inline: 0.5rem;
+  // text-align: center;
+
+  @include tablet {
+    grid-column: 1;
+    grid-row: 1;
+    padding-inline: 1.5rem 0;
+  }
+
+  @include laptop {
+    // height: 60%;
+    // display: flex;
+    // justify-content: space-between;
+  }
+}
+
+.owner__label {
+  display: none;
+
+  @include tablet {
+    display: inline-block;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+}
+
+.owner__heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.owner__headingText {
+  font-family: $font-title;
+  font-size: clamp($fs-2xl, 4vw, $fs-4xl);
+  font-weight: 700;
+  line-height: 1.3;
+  color: $color-text;
+  letter-spacing: 0.04em;
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  
+  @include tablet {
+    text-align: start;
+    white-space: wrap;
+  }
+}
+
+
+// ─── Image ───────────────────────────────────────────
+.owner__imageWrapper {
+  position: relative;
+  order: 2;
+  width: 100%;
+
+  @include tablet {
+    grid-column: 2;
+    grid-row: 1;
+
+    position: relative;
+    z-index: 1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    background:
+      linear-gradient(rgba(196, 185, 168, 0.125)) 100%;
+      // linear-gradient(rgba(0, 0, 0, 0.325)) 100%;
+  }
+}
+
+.owner__image {
+  width: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+
+  @include tablet {
+    height: 100%;
+  }
+
+  @include laptop {
+    height: 680px;
+  }
+}
+
+// ─── Card ─────────────────────────────────────────────
+.owner__card {
+  order: 3;
+  padding: $space-4;
+  margin-inline: $space-4;
+  background: $color-bg-97; // Slight transparency optional
+  width: 97%;
+
+
+  // Visual adjustments for the card overlap effect
+  @include tablet {
+    position: absolute;
+    left: -6%;  
+    bottom: -6rem;
+
+    width: min(80%, 485px);
+    z-index: 2; 
+    
+    padding: $space-6;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  @include laptop {
+    padding: $space-12;
+    width: min(65%, 692px);
+    left: -1.5%;
+    bottom: -1.5rem; 
+  }
+  
+
+  p {
+    font-family: $font-text;
+    font-size: $fs-sm;
+    line-height: 2.2;
+    color: $color-text;
+  }
+}

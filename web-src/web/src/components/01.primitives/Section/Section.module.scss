@@ -1,0 +1,32 @@
+@use '@styles/abstracts/variables' as *;
+@use '@styles/abstracts/mixins' as *;
+
+// Section.module.scss
+.section {
+  width: 100%;
+}
+
+// ── Spacing (padding-block only — never horizontal) ──
+.spacing--sm {
+  padding-block: var(--space-8);
+
+  @media (min-width: 1024px) {
+    padding-block: var(--space-12);
+  }
+}
+
+.spacing--md {
+  padding-block: var(--space-12);
+
+  @media (min-width: 1024px) {
+    padding-block: var(--space-16);
+  }
+}
+
+.spacing--lg {
+  padding-block: var(--space-16);
+
+  @media (min-width: 1024px) {
+    padding-block: var(--space-24);
+  }
+}

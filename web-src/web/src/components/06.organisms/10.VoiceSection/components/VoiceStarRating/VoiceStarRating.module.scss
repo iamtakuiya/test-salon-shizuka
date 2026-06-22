@@ -1,0 +1,16 @@
+// No @use — abstracts injected by vite.config.ts
+
+.starRating {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: $fs-sm;
+  color: $color-border;
+  line-height: 1;
+}
+
+.star--filled {
+  color: $color-accent;
+}

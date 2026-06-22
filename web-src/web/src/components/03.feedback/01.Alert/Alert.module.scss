@@ -1,0 +1,73 @@
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  padding: $space-4 $space-6;
+  border-radius: $radius-md;
+  border-left: 3px solid transparent;
+  @include font-sans($fs-sm);
+}
+
+// ── Variants ─────────────────────────────────────────
+.alert--success {
+  background-color: rgba(#4A7C59, 0.08);
+  border-left-color: #4A7C59;
+  color: #2E5238;
+}
+
+.alert--error {
+  background-color: rgba(#C0392B, 0.08);
+  border-left-color: #C0392B;
+  color: #8B1A10;
+}
+
+.alert--warning {
+  background-color: rgba($color-accent, 0.1);
+  border-left-color: $color-accent-dark;
+  color: $color-accent-dark;
+}
+
+.alert--info {
+  background-color: rgba($color-text, 0.05);
+  border-left-color: $color-text-muted;
+  color: $color-text-muted;
+}
+
+// ── Inner ─────────────────────────────────────────────
+.alert__icon {
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.alert__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.alert__title {
+  font-weight: 500;
+  color: inherit;
+}
+
+.alert__message {
+  color: inherit;
+  opacity: 0.85;
+}
+
+.alert__close {
+  flex-shrink: 0;
+  padding: $space-1;
+  color: inherit;
+  opacity: 0.5;
+  cursor: pointer;
+  line-height: 1;
+  transition: opacity $transition-fast;
+  @include focus-ring;
+
+  &:hover {
+    opacity: 1;
+  }
+}

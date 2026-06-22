@@ -1,0 +1,29 @@
+// Row.module.scss
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+// ── Gap ──────────────────────────────────────────────
+.gap--xs { gap: var(--space-2); }
+.gap--sm { gap: var(--space-4); }
+.gap--md { gap: var(--space-6); }
+.gap--lg { gap: var(--space-8); }
+// .gap--none { gap: 0; }
+
+
+// ── Align (cross axis) ───────────────────────────────
+.align--start   { align-items: flex-start; }
+.align--center  { align-items: center; }
+.align--end     { align-items: flex-end; }
+.align--stretch { align-items: stretch; }
+
+// ── Justify (main axis) ──────────────────────────────
+.justify--start   { justify-content: flex-start; }
+.justify--center  { justify-content: center; }
+.justify--end     { justify-content: flex-end; }
+.justify--between { justify-content: space-between; }
+.justify--around  { justify-content: space-around; }
+
+// ── Wrap ─────────────────────────────────────────────
+.wrap { flex-wrap: wrap; }

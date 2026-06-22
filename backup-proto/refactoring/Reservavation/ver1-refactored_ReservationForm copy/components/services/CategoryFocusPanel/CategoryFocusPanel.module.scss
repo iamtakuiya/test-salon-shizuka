@@ -1,0 +1,106 @@
+// ─── Category focus panel ─────────────────────────────────────────────────────
+
+.focusPanel {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+    background: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $space-6;
+}
+
+.focusPanel__desc {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  color: $color-text-muted;
+}
+
+.focusPanel__includes {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.1em;
+  color: $color-text-muted;
+}
+
+.focusPanel__note {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  color: $color-text-muted;
+  padding: $space-3 $space-4;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  background: $color-bg;
+}
+
+// ─── Menu radio list ─────────────────────────────────────────────────────────
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+}
+
+.menuList__item {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4 0;
+  border-bottom: 1px solid $color-border;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &--selected {
+    .menuList__price {
+      color: $color-accent;
+    }
+  }
+}
+
+.menuList__radio {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  accent-color: $color-accent;
+  cursor: pointer;
+}
+
+.menuList__name {
+  flex: 1;
+  font-family: $font-text;
+  font-size: $fs-sm;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.menuList__includes {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  color: $color-text-muted;
+}
+
+.menuList__duration {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.04em;
+  color: $color-text-muted;
+  flex-shrink: 0;
+}
+
+.menuList__price {
+  font-family: $font-title;
+  font-size: $fs-base;
+  letter-spacing: 0.04em;
+  color: $color-text;
+  flex-shrink: 0;
+  min-width: 7ch;
+  text-align: right;
+  transition: color $transition-base;
+}

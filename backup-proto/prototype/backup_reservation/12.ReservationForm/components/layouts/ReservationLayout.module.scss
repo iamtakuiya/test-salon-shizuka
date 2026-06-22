@@ -1,0 +1,49 @@
+// ─── Two-column layout ───────────────────────────────────────────────────────
+//
+//   Mobile / Tablet  → single column; sidebar hidden; inline form shown
+//   Laptop+          → left column + sticky right sidebar; inline form hidden
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: $space-12;
+
+  @include laptop {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: $space-16;
+  }
+}
+
+.layout__main {
+  display: flex;
+  flex-direction: column;
+  gap: $space-12;
+
+  @include laptop {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+// Inline form — shown only below laptop breakpoint
+.layout__inlineForm {
+  @include laptop {
+    display: none;
+  }
+}
+
+// Sticky sidebar — shown only at laptop+
+.layout__sidebar {
+  display: none;
+
+  @include laptop {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    flex-shrink: 0;
+    position: sticky;
+    top: calc(80px + $space-8); // header height + breathing room
+    align-self: flex-start;
+  }
+}

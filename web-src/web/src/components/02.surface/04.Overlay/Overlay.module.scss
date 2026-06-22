@@ -1,0 +1,38 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  // GSAP controls the animation — this is the initial hidden state
+  // Do not add CSS transitions here; they will conflict with GSAP timelines
+}
+
+.overlay--open {
+  pointer-events: auto;
+}
+
+// Full-screen mobile menu overlay
+.overlay--menu {
+  z-index: $z-overlay;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-bg;
+}
+
+// Centered modal container
+.overlay--modal {
+  z-index: $z-modal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($color-text, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+// Semi-transparent backdrop only — no content
+.overlay--backdrop {
+  z-index: $z-overlay;
+  background-color: rgba($color-text, 0.4);
+}

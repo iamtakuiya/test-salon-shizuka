@@ -1,0 +1,19 @@
+# Daily Update Report – 2026-06-21
+
+## Files Created / Updated
+
+- **web-src/doc/copywriting/COMPONENT_STRUCTURE_GUIDE_01.md**
+  - New version of the Component Structure & Naming Guide with version numbering (01).
+  - Includes original content, updated header with version info, and a clear version note.
+
+- **web-src/doc/copywriting/primitives-spec_ver2_01.md**
+  - New version of the Frontend Architecture Specification (primitives-spec) with version numbering (01).
+  - Preserves original specification and adds version header.
+
+## Summary of Actions
+
+1. Generated version‑numbered copies of the two requested documentation files.
+2. Added a concise header indicating the original last‑updated date, the new version date (2026‑06‑21), and the version identifier.
+3. Saved a daily report log in the `api` folder for auditing and traceability.
+
+*All operations completed successfully.*

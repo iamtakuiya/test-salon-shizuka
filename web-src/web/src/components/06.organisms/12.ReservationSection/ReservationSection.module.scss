@@ -1,0 +1,1001 @@
+// No @use — abstracts injected via vite.config.ts additionalData
+
+.reservation {}
+
+.reservation__container {
+  padding: 1rem 1.25rem;
+
+  @include tablet {
+    padding: 7rem 2rem;
+  }
+
+  @include laptop {
+    padding: 7rem 4rem;
+  }
+}
+
+// ─── Section heading ─────────────────────────────────────────────────────────
+
+.heading {
+  font-family: $font-title;
+  font-size: clamp($fs-2xl, 4vw, $fs-4xl);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+// ─── Field label ─────────────────────────────────────────────────────────────
+
+.fieldLabel {
+  display: block;
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-text;
+  margin-bottom: $space-4;
+}
+
+// ─── Two-column layout ───────────────────────────────────────────────────────
+//
+//   Mobile / Tablet  → single column; sidebar hidden; inline form shown
+//   Laptop+          → left column + sticky right sidebar; inline form hidden
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: $space-12;
+
+  @include laptop {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: $space-16;
+  }
+}
+
+.layout__main {
+  display: flex;
+  flex-direction: column;
+  gap: $space-12;
+
+  @include laptop {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+// Inline form — shown only below laptop breakpoint
+.layout__inlineForm {
+  @include laptop {
+    display: none;
+  }
+}
+
+// Sticky sidebar — shown only at laptop+
+.layout__sidebar {
+  display: none;
+
+  @include laptop {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    flex-shrink: 0;
+    position: sticky !important;
+    top: calc(80px + $space-1); // header height + breathing room
+    align-self: flex-start;
+  }
+}
+
+// ─── Date + Time row ─────────────────────────────────────────────────────────
+
+.dateTime {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: $space-8;
+  }
+}
+
+.dateTime__cal {
+  @include tablet {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.dateTime__time {
+  @include tablet {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+// ─── Calendar ────────────────────────────────────────────────────────────────
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  background: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $space-6;
+
+  @media screen and (max-width: 374px) {
+    padding: $space-2;
+  }
+}
+
+.calendar__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendar__navBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $fs-lg;
+  background: none;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  color: $color-text;
+  transition: border-color $transition-base, color $transition-base;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}
+
+.calendar__month {
+  font-family: $font-input;
+  font-size: $fs-sm;
+  letter-spacing: 0.08em;
+  color: $color-text;
+}
+
+.calendar__divider {
+  height: 1px;
+  background: $color-border;
+}
+
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  place-items: center;
+  gap: 2px;
+
+  @media screen and (max-width: 374px) {
+    gap: 0;
+  }
+
+  @include laptop {
+    place-items: unset;
+  }
+}
+
+.calendar__dayHeader {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.05em;
+  color: $color-text;
+  text-align: center;
+  padding: $space-2 0 $space-3;
+}
+
+.calendar__day {
+  width: 36px;
+  height: 36px;
+  padding: 10px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  font-family: $font-input;
+  font-size: $fs-xs;
+  background: none;
+  color: $color-text;
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast, color $transition-fast;
+
+  @media screen and (max-width: 374px) {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include laptop {
+    width: unset;
+    height: unset;
+    padding: unset; 
+  }
+
+
+  &:is(:not(.calendar__day--disabled, .calendar__day--selected)):hover {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &--disabled {
+    color: $color-border;
+    cursor: not-allowed;
+  }
+
+  &--selected {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: $color-bg !important;
+  }
+}
+
+.calendar__note {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.06em;
+  color: $color-text;
+  text-align: right;
+}
+
+// ─── Time slots ──────────────────────────────────────────────────────────────
+
+.timeSlots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  align-content: flex-start;
+}
+
+.timeSlots__slot {
+  padding: $space-2 $space-4;
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.06em;
+  color: $color-text;
+  background: none;
+  border: 1px solid $color-border;
+  border-radius: $radius-full;
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast, color $transition-fast;
+
+  &:not(.timeSlots__slot--selected):hover {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &--selected {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: $color-bg;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}
+
+// ─── Service section wrapper ─────────────────────────────────────────────────
+
+.serviceSection {
+  display: flex;
+  flex-direction: column;
+}
+
+// ─── Service gallery ─────────────────────────────────────────────────────────
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.gallery__viewport {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// Slider track — default flex strip for mobile / tablet
+.gallery__track {
+  display: flex;
+  gap: $space-4;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+
+  justify-content: flex-start;
+
+  // Desktop 2×3 grid override
+  &--grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-3;
+    transform: none !important;
+    width: auto;
+  }
+}
+
+// Individual category card
+.gallery__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $space-2;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  flex-shrink: 0;
+  
+  // THIS: Forces each slide card to lock exactly to the center ───
+  scroll-snap-align: center;
+  
+  // Mobile: Account for gap by subtracting from total track viewport width
+  width: 100%;
+
+  @include tablet {
+    // 2 cards per view: split width cleanly down the middle minus half of the track gap
+    width: calc(50% - (#{$space-4} / 2));
+  }
+
+  @include laptop {
+    width: 100%; // Reset structural width to auto fill inside the display grid 
+    scroll-snap-align: unset;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+    border-radius: $radius-sm;
+  }
+}
+
+.gallery__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: $radius-sm;
+  border: 2px solid transparent;
+  transition: border-color $transition-base, transform $transition-slow;
+  display: block;
+  background: $color-accent-90;
+
+  .gallery__card--active & {
+    border-color: $color-accent;
+    transform: scale(0.98);
+  }
+}
+
+.gallery__imgPlaceholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: $radius-sm;
+  background: linear-gradient(135deg, $color-accent-90 0%, $color-accent-65 100%);
+  border: 2px solid transparent;
+  transition: border-color $transition-base;
+
+  .gallery__card--active & {
+    border-color: $color-accent;
+  }
+}
+
+.gallery__cardEn {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $color-text;
+  padding-inline: 0.75rem;
+  
+  @include tablet {
+    padding-inline: 0.4rem;
+  }
+}
+
+.gallery__cardName {
+  font-family: $font-text;
+  font-size: $fs-xs;
+  letter-spacing: 0.06em;
+  color: $color-text;
+  padding-inline: 0.75rem;
+  margin-top: -0.5rem;
+
+  @include tablet {
+    padding-inline: 0.4rem;
+  }
+}
+
+// Slider controls
+.gallery__ctrl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-2 $space-2 $space-2 $space-4;
+}
+
+.gallery__dots {
+  display: flex;
+  gap: $space-2;
+  align-items: center;
+}
+
+.gallery__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $color-border;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background $transition-base, transform $transition-base;
+
+  &:hover {
+    background: $color-text;
+  }
+
+  &--active {
+    background: $color-text;
+    transform: scale(1.25);
+  }
+}
+
+.gallery__navs {
+  display: flex;
+  gap: $space-3;
+}
+
+.gallery__navBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $color-border;
+  background: none;
+  cursor: pointer;
+  font-size: $fs-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text;
+  transition: border-color $transition-base, color $transition-base;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}
+
+// ─── Category focus panel ─────────────────────────────────────────────────────
+
+.focusPanel {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  background: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $space-6;
+}
+
+.focusPanel__desc {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.focusPanel__includes {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.1em;
+  color: $color-text;
+}
+
+.focusPanel__note {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  color: $color-text;
+  padding: $space-3 $space-4;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  background: $color-bg;
+}
+
+// ─── Menu radio list ─────────────────────────────────────────────────────────
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+}
+
+.menuList__item {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4 0;
+  border-bottom: 1px solid $color-border;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &--selected {
+    .menuList__price {
+      color: $color-accent;
+    }
+  }
+}
+
+.menuList__radio {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  accent-color: $color-accent;
+  cursor: pointer;
+}
+
+.menuList__name {
+  flex: 1;
+  font-family: $font-text;
+  font-size: $fs-sm;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.menuList__includes {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  color: $color-text;
+}
+
+.menuList__duration {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.04em;
+  color: $color-text;
+  flex-shrink: 0;
+}
+
+.menuList__price {
+  font-family: $font-title;
+  font-size: $fs-base;
+  letter-spacing: 0.04em;
+  color: $color-text;
+  flex-shrink: 0;
+  min-width: 7ch;
+  text-align: right;
+  transition: color $transition-base;
+}
+
+// ─── Addon checkbox list ─────────────────────────────────────────────────────
+
+.addonList {
+  display: flex;
+  flex-direction: column;
+  background: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $space-4 $space-6;
+}
+
+.addonList__item {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 0;
+  border-bottom: 1px solid $color-border;
+  cursor: pointer;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &--selected {
+    .addonList__price {
+      color: $color-accent;
+    }
+  }
+}
+
+.addonList__checkbox {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  accent-color: $color-accent;
+  cursor: pointer;
+}
+
+.addonList__name {
+  flex: 1;
+  font-family: $font-text;
+  font-size: $fs-sm;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.addonList__duration {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.04em;
+  color: $color-text;
+  flex-shrink: 0;
+}
+
+.addonList__price {
+  font-family: $font-title;
+  font-size: $fs-base;
+  letter-spacing: 0.04em;
+  color: $color-text;
+  flex-shrink: 0;
+  min-width: 7ch;
+  text-align: right;
+  transition: color $transition-base;
+}
+
+// ─── Sidebar: summary + contact form ─────────────────────────────────────────
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  background: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $space-6;
+}
+
+.summary__label {
+  display: block;
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-text;
+}
+
+.summary__empty {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  color: $color-text;
+  letter-spacing: 0.04em;
+}
+
+.summary__rows {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.summary__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: $space-4;
+}
+
+.summary__itemName {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  color: $color-text;
+  letter-spacing: 0.04em;
+  flex: 1;
+  min-width: 0;
+}
+
+.summary__itemPrice {
+  font-family: $font-title;
+  font-size: $fs-sm;
+  color: $color-text;
+  flex-shrink: 0;
+}
+
+.summary__divider {
+  height: 1px;
+  background: $color-border;
+}
+
+.summary__totalRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: $space-4;
+}
+
+.summary__totalLabel {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.08em;
+  color: $color-text;
+}
+
+.summary__total {
+  font-family: $font-title;
+  font-size: $fs-2xl;
+  color: $color-text;
+}
+
+.summary__note {
+  font-family: $font-input;
+  font-size: $fs-xxs;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  color: $color-text;
+}
+
+// ─── Contact form ─────────────────────────────────────────────────────────────
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  background: $color-bg-97;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $space-6;
+}
+
+.contactForm__field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.contactForm__fieldLabel {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.08em;
+  color: $color-text;
+}
+
+.contactForm__required {
+  color: $color-accent;
+  margin-left: 2px;
+}
+
+.contactForm__input {
+  width: 100%;
+  height: 44px;
+  padding: 0 $space-4;
+  font-family: $font-input;
+  font-size: $fs-sm;
+  color: $color-text-muted;
+  background: $color-bg;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  transition: border-color $transition-base;
+
+  &::placeholder {
+    color: $color-text;
+    opacity: 0.6;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-accent;
+  }
+
+  &--error {
+    border-color: $color-error;
+  }
+}
+
+.contactForm__error {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  color: $color-error;
+  letter-spacing: 0.04em;
+}
+
+// ─── Buttons ─────────────────────────────────────────────────────────────────
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-3 $space-8;
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color-bg;
+  background: $color-accent;
+  border: 1px solid $color-accent;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: background $transition-base, border-color $transition-base;
+  width: 100%;
+
+  &:hover:not(:disabled) {
+    background: $color-accent-dark;
+    border-color: $color-accent-dark;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+  }
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-3 $space-6;
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: $color-text;
+  background: transparent;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: color $transition-base, border-color $transition-base;
+  
+  &:hover {
+    color: $color-text;
+    border-color: $color-text;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+  }
+  
+  @media screen and (max-width: 374px) {
+    white-space: wrap;
+  }
+}
+
+// ─── Confirmation view ────────────────────────────────────────────────────────
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+}
+
+.confirmation__table {
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  overflow: hidden;
+}
+
+.confirmation__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $space-6;
+  padding: $space-4 $space-6;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &--total {
+    background: $color-accent-90;
+  }
+}
+
+.confirmation__label {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  letter-spacing: 0.08em;
+  color: $color-text;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.confirmation__value {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  color: $color-text;
+  letter-spacing: 0.06em;
+  text-align: right;
+}
+
+.confirmation__totalVal {
+  font-family: $font-title;
+  font-size: $fs-xl;
+  color: $color-text;
+}
+
+.confirmation__error {
+  font-family: $font-input;
+  font-size: $fs-xs;
+  color: $color-error;
+  letter-spacing: 0.04em;
+}
+
+.confirmation__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $space-4;
+  padding-top: $space-4;
+  border-top: 1px solid $color-border;
+}
+
+// ─── Success view ─────────────────────────────────────────────────────────────
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-6;
+  padding: $space-16 $space-8;
+  text-align: center;
+}
+
+.success__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: $color-accent;
+  color: $color-bg;
+  font-size: $fs-xl;
+  font-family: $font-input;
+}
+
+.success__heading {
+  font-family: $font-title;
+  font-size: $fs-2xl;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: $color-text;
+}
+
+.success__body {
+  font-family: $font-text;
+  font-size: $fs-sm;
+  line-height: 2;
+  color: $color-text;
+  letter-spacing: 0.06em;
+}

@@ -1,0 +1,27 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Booking {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  date      String
+  time      String
+  services  String   // JSON.stringify array
+  addons    String   // JSON.stringify array
+  total     Int      // in yen, calculated server-side
+  createdAt DateTime @default(now())
+}
+
+model Newsletter {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String   @default("website")
+  createdAt DateTime @default(now())
+}
